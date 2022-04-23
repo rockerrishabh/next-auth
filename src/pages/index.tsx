@@ -27,7 +27,7 @@ const Home: NextPage = () => {
 
   async function create(data: ContactData) {
     try {
-      fetch("http://localhost:3000/api/contact/create", {
+      fetch("http://127.0.0.1:3000/api/contact/create", {
         body: JSON.stringify(data),
         headers: {
           "content-type": "application/json",
