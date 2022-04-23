@@ -12,9 +12,9 @@ datasource db {
 
 model Contact {
   id               String    @id @default(cuid())
-  name             String
-  email            String
-  message          String
+  name             String?
+  email            String?
+  message          String?
 }
 
 model Pages {
