@@ -3,7 +3,13 @@ import type { NextPage, NextPageContext } from "next";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
+
+const SunEditor = dynamic(() => import("suneditor-react"), {
+  ssr: false,
+});
 
 interface ContactData {
   name: string;
@@ -40,6 +46,10 @@ const Home: NextPage = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleEditor = (content: string) => {
+    console.log(content);
   };
 
   return (
@@ -144,6 +154,14 @@ const Home: NextPage = () => {
               className="cursor-pointer px-4 py-3 w-full mt-4 hover:bg-blue-500 bg-blue-600 text-white rounded-md"
             />
           </form>
+        </div>
+        <div className="flex w-full">
+          <SunEditor
+            onChange={handleEditor}
+            defaultValue=""
+            height="100%"
+            width="100%"
+          />
         </div>
       </div>
     </>
