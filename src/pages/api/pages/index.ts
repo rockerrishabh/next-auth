@@ -11,7 +11,7 @@ export default async function handler(
     await prisma.pages.create({
       data: { title, content },
     });
-    res.status(200).json({ message: "Pages Saved" });
+    res.status(200).json({ message: "Page Created" });
   } catch (error) {
     console.log(error);
   }
